@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#2E2A35"
+    android:orientation="vertical">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="150dp"
+        android:layout_height="210dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="30dp">
+
+        <ImageView
+            android:id="@+id/wallset"
+            android:layout_width="150dp"
+            android:layout_height="210dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="10dp"
+
+            android:src="@drawable/baseline_wifi_protected_setup_24"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+</GridLayout>
