@@ -19,7 +19,7 @@ class WallpaperAdapter(val homeActivity: MainActivity, val hits: List<HitsItem?>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WallDataViewHolder {
-        val view =LayoutInflater.from(parent.context).inflate(R.layout.wall_item,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.wall_item,parent,false)
         return WallDataViewHolder(view)
     }
 

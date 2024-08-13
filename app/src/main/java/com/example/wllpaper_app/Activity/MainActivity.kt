@@ -6,9 +6,9 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.wallhaven.Adapter.WallpaperAdapter
 import com.example.wallhaven.Model.WallModel
 import com.example.wallhaven.Retrofit.ApiClient
@@ -24,13 +24,10 @@ class MainActivity : AppCompatActivity() {
     private var wallModel: WallModel? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        setContentView(binding.root)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getSearchWallApi("all")
@@ -70,10 +67,19 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+    private fun replaceFragment(fragment: Fragment) {
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.Flayout, fragment)
+            .commit()
+    }
+
     fun setRv() {
         val adapter = WallpaperAdapter(this@MainActivity, wallModel!!.hits)
-        val lm = GridLayoutManager(this, 2)
-        binding.wallrvdata.layoutManager = lm
+        val lm = GridLayoutManager(this@MainActivity, 2)
+         binding.wallrvdata.layoutManager = lm
         binding.wallrvdata.adapter = adapter
 
 
